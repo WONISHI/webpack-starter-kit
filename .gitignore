@@ -1,0 +1,64 @@
+# dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# package manager
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# build output
+dist/
+build/
+coverage/
+.cache/
+.temp/
+tmp/
+out/
+
+# vite / vue
+.vite/
+*.local
+
+# env
+.env
+.env.*
+!.env.example
+
+# logs
+logs/
+*.log
+
+# editor
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# system
+.DS_Store
+Thumbs.db
+
+# test
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
+
+# eslint / stylelint cache
+.eslintcache
+.stylelintcache
+
+# unplugin / auto import generated files
+auto-imports.d.ts
+components.d.ts
+
+# pnpm store / metadata
+.pnpm-store/
+
+# local config
+local/
