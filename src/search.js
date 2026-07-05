@@ -2,11 +2,17 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
+import logo from "./assets/icon_150x150.png";
 import "./search.less";
 
 class Search extends React.Component {
   render() {
-    return <div className="search-text">Search Text</div>;
+    return (
+      <div className="search-text">
+        Search Text
+        <img src={logo} />
+      </div>
+    );
   }
 }
 ReactDOM.render(<Search />, document.getElementById("root"));
