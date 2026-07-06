@@ -15,6 +15,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name].js",
+    clean: true,
   },
   module: {
     rules: [
@@ -36,7 +37,24 @@ module.exports = {
       {
         test: /.(png|jpg|gif|jpeg)$/,
         exclude: /node_modules/,
-        use: ["file-loader"],
+        use: {
+          loader: "url-loader",
+          options: {
+            limit: 10240,
+          },
+        },
+      },
+      {
+        test: /\.(woff|woff2|ttf|otf)$/i,
+        type: "javascript/auto",
+        exclude: /node_modules/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "fonts/[name].[contenthash:8].[ext]",
+            esModule: false,
+          },
+        },
       },
     ],
   },
