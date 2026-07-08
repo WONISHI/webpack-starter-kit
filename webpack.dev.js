@@ -59,7 +59,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [new webpack.HotModuleReplacementPlugin(), new CleanWebpackPlugin()],
   devServer: {
     static: {
       directory: path.join(__dirname, "dist"),
