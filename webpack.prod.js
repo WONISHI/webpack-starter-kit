@@ -3,6 +3,7 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
@@ -67,5 +68,31 @@ module.exports = {
       filename: "[name]_[contenthash:8].css",
     }),
     new CssMinimizerPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "src/search.html"),
+      filename: "search.html",
+      chunks: ["search"],
+      inject: true,
+      minify: {
+        html5: true,
+        collapseWhitespace: true,
+        minifyCSS: true,
+        minifyJS: true,
+        removeComments: false,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "src/index.html"),
+      filename: "index.html",
+      chunks: ["index"],
+      inject: true,
+      minify: {
+        html5: true,
+        collapseWhitespace: true,
+        minifyCSS: true,
+        minifyJS: true,
+        removeComments: false,
+      },
+    }),
   ],
 };
