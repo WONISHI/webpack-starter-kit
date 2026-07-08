@@ -3,6 +3,7 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const webpack = require("webpack");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
   /**
@@ -65,5 +66,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name]_[contenthash:8].css",
     }),
+    new CssMinimizerPlugin(),
   ],
 };
