@@ -36,7 +36,28 @@ module.exports = {
       {
         test: /.less$/,
         exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  require("autoprefixer")({
+                    // browsers 是老写法，建议用 overrideBrowserslist
+                    overrideBrowserslist: [
+                      "last 2 versions",
+                      "> 1%",
+                      "iOS >= 7",
+                    ],
+                  }),
+                ],
+              },
+            },
+          },
+          "less-loader",
+        ],
       },
       {
         test: /.(png|jpg|gif|jpeg)$/,
