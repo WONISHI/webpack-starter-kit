@@ -2,7 +2,7 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import logo from "./assets/icon_150x150.png";
+import logo from "../assets/icon_150x150.png";
 import "./search.less";
 
 class Search extends React.Component {
