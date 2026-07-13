@@ -7,6 +7,7 @@ import "./search.less";
 
 class Search extends React.Component {
   render() {
+    debugger;
     return (
       <div className="search-text">
         Search Text
