@@ -49,6 +49,7 @@ module.exports = {
     filename: "[name].js",
     clean: true,
   },
+  devtool: "cheap-source-map",
   module: {
     rules: [
       {
