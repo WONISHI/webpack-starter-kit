@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackExternalsPlugin = require("html-webpack-externals-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const glob = require("glob");
@@ -127,5 +128,20 @@ module.exports = {
     new CssMinimizerPlugin(),
     ...htmlWebpackPlugins,
     new CleanWebpackPlugin(),
+    new HtmlWebpackExternalsPlugin({
+      externals: [
+        {
+          module: "react",
+          entry: "https://unpkg.com/react@18.3.1/umd/react.production.min.js",
+          global: "React",
+        },
+        {
+          module: "react-dom",
+          entry:
+            "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js",
+          global: "ReactDOM",
+        },
+      ],
+    }),
   ],
 };
