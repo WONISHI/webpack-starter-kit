@@ -128,20 +128,31 @@ module.exports = {
     new CssMinimizerPlugin(),
     ...htmlWebpackPlugins,
     new CleanWebpackPlugin(),
-    new HtmlWebpackExternalsPlugin({
-      externals: [
-        {
-          module: "react",
-          entry: "https://unpkg.com/react@18.3.1/umd/react.production.min.js",
-          global: "React",
-        },
-        {
-          module: "react-dom",
-          entry:
-            "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js",
-          global: "ReactDOM",
-        },
-      ],
-    }),
+    // new HtmlWebpackExternalsPlugin({
+    //   externals: [
+    //     {
+    //       module: "react",
+    //       entry: "https://unpkg.com/react@18.3.1/umd/react.production.min.js",
+    //       global: "React",
+    //     },
+    //     {
+    //       module: "react-dom",
+    //       entry:
+    //         "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js",
+    //       global: "ReactDOM",
+    //     },
+    //   ],
+    // }),
   ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /(react|react-dom)/,
+          name: "vendors",
+          chunks: "all",
+        },
+      },
+    },
+  },
 };
