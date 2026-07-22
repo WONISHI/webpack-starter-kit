@@ -46,7 +46,7 @@ module.exports = {
    * 如果entry是对象代表双入口，那么不能多入口共用同一个固定输出文件名
    */
   entry: entry,
-  mode: "production",
+  mode: "none",
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name]_[chunkhash:8].js",
@@ -128,6 +128,7 @@ module.exports = {
     new CssMinimizerPlugin(),
     ...htmlWebpackPlugins,
     new CleanWebpackPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     // new HtmlWebpackExternalsPlugin({
     //   externals: [
     //     {
